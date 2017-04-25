@@ -11,11 +11,11 @@ for r in $(cat repos | grep -v "^\s*#") ; do
     [[ -n "$(echo "$repo_name" | grep ":" )" ]] && tag_prefix=$(echo $repo_name | cut -d":" -f2)
     repo_name=$(echo $repo_name | cut -d":" -f1)
     tag_method=$(echo $r | cut -d" " -f2)
-    git clone --depth=1 https://${GIT_USER}:${GIT_PASS}@${repo_name} 2>/dev/null && cd `basename ${repo_name}`
+    git clone --depth=1 https://${GIT_USER}:${GIT_PASS}@${repo_name} 2>/dev/null; cd `basename ${repo_name}`
     newtag=`$tag_method`
     [[ -n "$tag_prefix" ]] && newtag="${tag_prefix}-${newtag}"
     git tag $newtag
-    #git push --tags
+    git push --tags
     cd ..
 done
 IFS=$IFSBAK
