@@ -17,7 +17,7 @@ for r in $(cat repos | grep -v "^\s*#") ; do
         newtag="${tag_prefix}-${newtag}"
     fi
     git tag $newtag
-    git push --tags
+    # git push --tags
     cd ..
 done
 IFS=$IFSBAK
