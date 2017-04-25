@@ -6,7 +6,7 @@ md(){
     [[ -z "`echo $giturl | grep github`" ]] && echo "'md' tagging method currently works only with github repos, terminating." && exit 1
     prevV=$(git ls-remote -t $giturl | awk '{print $2}' | cut -d '/' -f 3 | grep -v "\-rc" | cut -d '^' -f 1 | sed 's/^v//' | sort -bt- -k1nr -k2nr)
     if [[ -n "$tag_prefix" ]]; then
-        prevV=$(echo "$prevV" | grep $tag_prefix | head -1)
+        prevV=$(echo "$prevV" | grep $tag_prefix | sed 's/'$tag_prefix'-//' | head -1)
     else
         prevV=$(echo "$prevV" | head -1)
     fi
