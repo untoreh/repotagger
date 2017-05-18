@@ -1,8 +1,8 @@
 install: true
 sudo: false
 language: generic
-script:
-- [ $(echo "$TRAVIS_COMMIT_MESSAGE" | grep "skip-tags") ] || ./tag-repos
+script: |
+  [ $(echo "$TRAVIS_COMMIT_MESSAGE" | grep "skip-tags") ] || ./tag-repos
 env:
   global:
   - secure: GTmM+C/fPzptZnoZYqD2U0Z3T/HAiMClS2OYXi+YGFqp6H8EYU/AECjKAImKqQjwMj0YRKxKPT6igks3grZR6HlKEP0Q6iiHBVbVa87bQq7ZOjo3m8qHD2MxLShpaFSyy3q3a8PjqIF+vXhhv3xye5pnPHqhjiNqYjtYP8Oy4s1p6iuMepTUM/QUauHEFii2utsh5oBiKpLGBo8L6S9MKMyLpi+3suh/VUs+ElpnYlDVaWrW14JWVRFKEn9m8OefX9LrBSlPMT6Hm03L4BI9LYKb95bX4WUUtmG4WYoHBWkIgpnybo13lTITHNz64U+FkFPFnCFbISyUNtQdGXtQv9oM9F7mkvnrZZiD1z4rYcR/nVyC1wUeGlV0BbWX55SeRGKGj9anIHJd2QcvFEprD6DWu9sSH+W0ESFtUX6F8ATk4dVuHN+IBNWV8YrosfAuAXqHGpt1gxMdMQtn1p0sHc5m/pLJasARna07v0B8YqsDuZ3VW0An8Tc515T1Rz4e/6ZTxv6a4pmEOyruEvyJ3xo3KKV9QIlvVz4bxfMjBagwjrhn0BUeLn9MYZ/E+wq6CqPXO+XNf43zTdsRhl+mnG+/hmE1zzvHWdFMUuV/d28Y+tlrRpX8QoS2KmqbIsXFTZX9K1XRlrxAQ4jxOo0n08PfFZupEC1oyu4lIgz72PE=
