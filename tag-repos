@@ -1,5 +1,5 @@
 #!/bin/bash
-source tag-methods
+. ./tag-methods
 
 [[ -z ${GIT_USER} || -z ${GIT_PASS} ]] && echo "missing git creds!" && exit 1
 
@@ -13,11 +13,13 @@ for r in $(cat repos | grep -v "^\s*#") ; do
     tag_method=$(echo $r | cut -d" " -f2)
     git clone --depth=1 https://${GIT_USER}:${GIT_PASS}@${repo_name} 2>/dev/null; cd `basename ${repo_name}`
     newtag=`$tag_method`
-    if [[ -n "$tag_prefix" ]]; then
-        newtag="${tag_prefix}-${newtag}"
+    if [ -n "$newtag" ]; then
+        if [ -n "$tag_prefix" ]; then
+            newtag="${tag_prefix}-${newtag}"
+        fi
+        git tag $newtag
+        git push --tags
     fi
-    git tag $newtag
-    git push --tags
     cd ..
 done
 IFS=$IFSBAK
