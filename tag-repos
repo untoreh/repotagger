@@ -1,7 +1,7 @@
 #!/bin/bash
 . ./tag-methods
 
-[[ -z ${GIT_USER} || -z ${GIT_PASS} ]] && echo "missing git creds!" && exit 1
+[[ -z ${GIT_USER} && -z ${GIT_PASS} ]] && echo "missing git creds!" && exit 1
 
 IFSBAK=$IFS
 IFS="
